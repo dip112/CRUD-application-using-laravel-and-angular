@@ -1,5 +1,5 @@
 # CRUD-application-using-laravel-and-angular
-This is a simple CRUD application which is created using laravel as backend and angular as frontend
+This is a simple CRUD application that is developed using Laravel as the backend and angular as frontend
 <br/>
 <h3 align="center">Employee Registration</h3>
 <p align="center">
