@@ -1,0 +1,119 @@
+<header>
+    <div class="p-5 text-center bg-light">
+        <h2><strong>Laravel + Angular</strong></h2>
+    </div>
+</header>
+
+<div class="container mt-4" style="align-items: center;justify-content: center;display: flex;">
+    <div class="card col-7">
+        <div class="card"><h3 class="text-center">Employee Registration</h3></div>
+        <form style="margin-left: 5px; margin-right: 5px; margin-bottom: 5px;">
+            <div class="form-group mt-2">
+                <label for="name">Name</label>
+                <input class="form-control" [(ngModel)]="Name" [ngModelOptions]="{standalone:true}" type="text" id="name" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input class="form-control" [(ngModel)]="Address" [ngModelOptions]="{standalone:true}" type="text" id="address" placeholder="Enter Address">
+            </div>
+            <div class="form-group mb-2">
+                <label for="phone">Phone</label>
+                <input class="form-control" [(ngModel)]="Phone" [ngModelOptions]="{standalone:true}" type="number" id="phone" placeholder="Enter Phone">
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" (click)="save()" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- <div class="container mt-5" style="align-items: center;justify-content: center;display: flex;">
+    <div class="card col-7">
+        <div class="card"><h3 class="text-center">Employee Details</h3></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{EmployeeDetails.id}}</td>
+                    <td>{{EmployeeDetails.Name}}</td>
+                    <td>{{EmployeeDetails.Address}}</td>
+                    <td>{{EmployeeDetails.Phone}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+
+<div class="container mt-5" style="align-items: center;justify-content: center;display: flex;">
+    <div class="card col-7">
+        <div class="card"><h3 class="text-center">Employee Table</h3></div>
+        <table class="table">
+            <thead>
+                <h4 *ngIf="!isResultLoaded">Loading.....</h4>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let EmployeeItem of EmployeeArray">
+                    <td>{{EmployeeItem.id}}</td>
+                    <td>{{EmployeeItem.Name}}</td>
+                    <td>
+                        <button class="btn btn-success" (click)="getEmployee(EmployeeItem)" style="margin-right: 2px;">View</button>
+                        <button class="btn btn-primary" (click)="setUpdate(EmployeeItem)" style="margin-right: 2px;">Edit</button>
+                        <button class="btn btn-danger" (click)="setDelete(EmployeeItem)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+            
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Employee Details</h4>
+                        <button type="button" (click)="closeModal()" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+            
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{EmployeeDetails.id}}</td>
+                                    <td>{{EmployeeDetails.Name}}</td>
+                                    <td>{{EmployeeDetails.Address}}</td>
+                                    <td>{{EmployeeDetails.Phone}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" (click)="closeModal()" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
